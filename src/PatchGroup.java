@@ -5,16 +5,13 @@ import org.osbot.rs07.api.map.Position;
 public class PatchGroup {
 
     //A single strip of 4 patches
-
-    int patchGroupID; // the ID of the patch, from 0 to 4
     Patch[] patches;
     Area patchArea;
 
 
-    PatchGroup(int id, Position sWCorner){
+    PatchGroup(Position sWCorner){
         //sWCorner is the bottom left corner of the interactive dirt area, ignoring the 1x3 border on either end
         Position nECorner = new Position(sWCorner.getX() + 2, sWCorner.getY() + 11, sWCorner.getZ());
-        patchGroupID = id;
         patchArea = new Area(sWCorner, nECorner);
         patches = new Patch[4];
         for(int i = 0; i < patches.length; i++){

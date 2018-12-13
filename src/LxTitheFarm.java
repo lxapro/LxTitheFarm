@@ -1,9 +1,5 @@
-import org.osbot.P;
-import org.osbot.rs07.api.Skills;
 import org.osbot.rs07.api.map.Position;
-import org.osbot.rs07.api.ui.MagicSpell;
 import org.osbot.rs07.api.ui.Skill;
-import org.osbot.rs07.api.ui.Spells;
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
 import org.osbot.rs07.utility.ConditionalSleep;
