@@ -8,6 +8,7 @@ public class AreaHandler {
     Position farmEntrySpot;
     private Position rightEdgeCentre;
     private Position startPosition;
+    PatchPair[] patchPairs;
 
     void setFarmEntrySpot(Position p){
         farmEntrySpot = p;
@@ -19,6 +20,12 @@ public class AreaHandler {
 
     void setStartPosition(){
         startPosition = new Position(rightEdgeCentre.getX() - 5, rightEdgeCentre.getY() + 3, rightEdgeCentre.getZ());
+    }
+
+    void createPatchAreas(){
+        patchPairs = new PatchPair[3];
+        patchPairs[0] = new PatchPair(0, new Position(startPosition.getX() + 1, startPosition.getY(), startPosition.getZ()));
+        patchPairs[1] = new PatchPair(1, new Position(startPosition.getX() + 1, startPosition.getY() + 17, startPosition.getZ()));
     }
 
 }
