@@ -1,3 +1,4 @@
+import org.osbot.rs07.api.map.Area;
 import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.ui.Skill;
 import org.osbot.rs07.script.Script;
@@ -14,12 +15,13 @@ public class LxTitheFarm extends Script {
 
     @Override
     public void onStart(){
-        areas = new AreaHandler();
+        areas = new AreaHandler(this);
         if(areas.startArea.contains(myPosition())){
             if(tryOpenSeedTable()){
                 if(tryGetSeeds()){
                     if(tryEnterFarm()){
                         createFarmArea();
+
                     }
                 }
             } else{
@@ -91,6 +93,28 @@ public class LxTitheFarm extends Script {
         areas.setFarmEntrySpot(myPosition());
         areas.setRightEdgeCentrePosition();
         areas.setStartPosition();
+        areas.createPatchAreas();
+        if(moveToStart()){
+            log("destination reached");
+        } else{
+            log("failed to reach destination");
+        }
+    }
+
+    private boolean moveToStart(){
+        log("walking to start position");
+        return getWalking().walk(new Area(new Position(areas.startPosition.getX() -1, areas.startPosition.getY(), areas.startPosition.getZ()), new Position(areas.startPosition.getX(), areas.startPosition.getY() + 1, areas.startPosition.getZ())));
+    }
+
+    void logAreas(){
+        for(int i = 0; i < areas.patchPairs.length; i++){
+            log(areas.patchPairs[i].startPos);
+            if(i != 2) {
+                log(areas.patchPairs[i].linkedPatches[0].patchArea.getPositions().toString());
+            } else {
+                log(areas.patchPairs[i].linkedPatches[1].patchArea.getPositions().toString());
+            }
+        }
     }
 
     private int getSeedDialogueOption(int farmingLevel){
