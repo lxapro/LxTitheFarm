@@ -5,9 +5,11 @@ public class PatchPair {
     //A linked pair of adjacent 4 patches
 
     PatchGroup[] linkedPatches; //0 patch on left side, 1 on right side, 0 will be null for the single patch
+    Position startPos;
 
     PatchPair(int patchID, Position startPosition){
         //Start position is the left middle tile of patch 1
+        startPos = startPosition;
         linkedPatches = new PatchGroup[2];
         linkedPatches[1] = new PatchGroup(startPosition);
         if(patchID == 2){
