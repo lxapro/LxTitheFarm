@@ -1,4 +1,3 @@
-import javafx.geometry.Pos;
 import org.osbot.rs07.api.map.Area;
 import org.osbot.rs07.api.map.Position;
 
